@@ -1,3 +1,8 @@
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pbi-load-test?logo=python)
+![PyPI - Version](https://img.shields.io/pypi/v/pbi-load-test?logo=pypi&color=blue&link=https%3A%2F%2Fpypi.org%2Fproject%2Fpbi-load-test%2F)
+
+
+
 # pbi-load-test
 Python package and CLI application to measure Power BI reports loading capacity, using different filters and parameters.
 
