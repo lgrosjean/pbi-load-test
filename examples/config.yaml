@@ -1,0 +1,13 @@
+# authentification: oauth
+workspace: ... # PBI Workspace Name
+report: ... # Report name
+page: Activity Field Days
+
+slicers:
+  - table: "geography"
+    column: "country name"
+    values:
+      - "Brazil"
+
+filters:
+# TODO: create jobs list to run
