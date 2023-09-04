@@ -32,7 +32,7 @@ $ pip install pbi-load-test
 And to test the installation
 ```
 $ pbi-load-test --version
-0.1.0a1
+0.1.1a1
 ```
 
 ###  with `poetry`
@@ -43,7 +43,7 @@ $ poetry add pbi-load-test
 And to test the installation
 ```
 $ poetry run pbi-load-test --version
-0.1.0a1
+0.1.1a1
 ```
 
 
