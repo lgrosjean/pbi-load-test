@@ -8,6 +8,10 @@ Python package and CLI application to measure Power BI reports loading capacity,
 
 It simulates a realistic set of user actions such as changing slicers, filters (soon), bookmarks (soon)
 
+<p style="text-align: center;">
+[Prerequisites](#prerequisites) | [Installation](#installation) |  [Configuration](#configuration) | [Example](#example)
+</p>
+
 ## Prerequisites
 
 - It requires and Azure AD login method. Ensure you have [**Azure CLI**](https://learn.microsoft.com/fr-fr/cli/azure/install-azure-cli) installed locally and authentificate (`az login`) in order to generate a token easily. Soon:
@@ -17,6 +21,31 @@ It simulates a realistic set of user actions such as changing slicers, filters (
 > - Soon: the package will be able to load Service Principal to to the test (Tenant ID, Client ID and Client Secret)
 
 - This package is based on **Selenium** python package. It will open a Chromium window to launch the test. In any case, it may require the Chromium driver locally. The latest versions for each OS can be found [here](https://chromedriver.chromium.org/downloads).
+
+## Installation
+
+### With `pip`
+```
+$ pip install pbi-load-test
+```
+
+And to test the installation
+```
+$ pbi-load-test --version
+0.1.0a1
+```
+
+###  with `poetry`
+```
+$ poetry add pbi-load-test
+```
+
+And to test the installation
+```
+$ poetry run pbi-load-test --version
+0.1.0a1
+```
+
 
 ## Configuration
 

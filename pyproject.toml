@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pbi-load-test"
-version = "0.1.1a0"
+version = "0.1.1a1"
 description = "Python package and CLI application to measure Power BI reports loading capacity, using different filters and parameters."
 authors = ["Léo Grosjean <leo.bigjin@gmail.com>"]
 readme = "README.md"
