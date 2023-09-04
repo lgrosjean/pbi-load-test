@@ -1,6 +1,6 @@
 # authentification: oauth
-workspace: CORE - MARKETING [DEV]
-report: SFE Country Dashboard TMDL
+workspace: ... # PBI Workspace Name
+report: ... # Report name
 page: Activity Field Days
 
 slicers:

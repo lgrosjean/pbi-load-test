@@ -13,8 +13,28 @@ It simulates a realistic set of user actions such as changing slicers, filters (
 
 - This package is based on **Selenium** python package. It will open a Chromium window to launch the test. In any case, it may require the Chromium driver locally. The latest versions for each OS can be found [here](https://chromedriver.chromium.org/downloads).
 
+## Configuration
 
+The load test is configurated through a `config.yaml` file which should be located in the current working directory. 
 
+```yaml
+# authentification: oauth
+workspace: ... # PBI Workspace Name
+report: ... # Report name
+page: ... # Page name
+
+slicers:
+  - table: ... # Table name from dataset which contains the column to filter on
+    column: ... # The column name containing the values to filter on
+    values:
+      - ... # The value to filter on
+      - ...
+```
+
+> [!NOTE]
+> For the moment, only [slicers](https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-slicers?tabs=powerbi-desktop) are usable to filter on. Later, [filters](https://learn.microsoft.com/en-us/power-bi/create-reports/power-bi-report-add-filter?tabs=powerbi-desktop) will be available.
+> Also, one slicer can be used in this first version. In the future, the tool will be able to iterate between slicers list and create combinations between slicer and filter values.
+> 
 ## Example
 
 It ensures that a `config.yaml` file exists in the current working directory
