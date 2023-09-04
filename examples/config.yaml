@@ -1,0 +1,13 @@
+# authentification: oauth
+workspace: CORE - MARKETING [DEV]
+report: SFE Country Dashboard TMDL
+page: Activity Field Days
+
+slicers:
+  - table: "geography"
+    column: "country name"
+    values:
+      - "Brazil"
+
+filters:
+# TODO: create jobs list to run
