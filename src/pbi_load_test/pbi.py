@@ -9,6 +9,7 @@ import requests
 from azure.identity import (  # ClientSecretCredential,; InteractiveBrowserCredential,
     DefaultAzureCredential,
 )
+from loguru import logger
 
 SCOPE = "https://analysis.windows.net/powerbi/api/.default"
 
@@ -22,13 +23,13 @@ class PowerBIClient:
         self.token = self.get_token()
 
     # TODO: check "authentification" method in config: oauth, browser, service principal
-    @staticmethod
-    def get_token():
+    def get_token(self):
         # TODO: check if azure-cli is available, if not use InteractiveBrowser
         # azure-cli installed (brew install ...)
         # `az login --allow-no-subscriptions` or see the option with scope in parameters
         credentials = DefaultAzureCredential()
         access_token = credentials.get_token(SCOPE)
+        logger.info("Credentials Azure retrived")
         token = access_token.token
         return token
 
@@ -49,7 +50,11 @@ class PowerBIClient:
 
     def get(self, endpoint, params: t.Optional[dict] = None):
         url = urljoin(self.base_url, endpoint)
-        return requests.get(url, params=params, headers=self.headers)
+        res = requests.get(url, params=params, headers=self.headers, timeout=60)
+        logger.debug(
+            f"Endpoint {endpoint} requested with status code {res.status_code}"
+        )
+        return res
 
     def get_workspaces(self):
         # TODO: create dataclass to load json

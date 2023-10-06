@@ -2,6 +2,7 @@ import json
 import time
 from pathlib import Path
 
+from loguru import logger
 from selenium.common.exceptions import JavascriptException
 
 from .config import load_config
@@ -21,11 +22,11 @@ def run(project_dir=None, clean=True):
     config = load_config()
 
     workspace_name = config["workspace"]
-    print(workspace_name)
+    logger.info(f"Workspace name: {workspace_name}")
     report_name = config["report"]
-    print(report_name)
+    logger.info(f"Report name: {report_name}")
     page_name = config.get("page", "")
-    print(page_name)
+    logger.info(f"Page name: {page_name}")
 
     # Get Workspace
     workspace_id = pbi_client.get_workspace_id(workspace_name)
