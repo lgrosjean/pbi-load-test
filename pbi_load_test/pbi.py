@@ -15,7 +15,7 @@ SCOPE = "https://analysis.windows.net/powerbi/api/.default"
 
 
 class PowerBIClient:
-    base_url = "https://api.powerbi.com/v1.0/myorg/ "
+    base_url = "https://api.powerbi.com/v1.0/myorg/"
 
     # TODO: if client_id, tenant_id, client_secret provided, use ClientSecretCredential
     def __init__(self):
