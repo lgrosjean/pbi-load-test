@@ -79,13 +79,13 @@ It ensures that a `config.yaml` file exists in the current working directory
 ```
 ❯ poetry run pbi-load-test run
 
-CORE - MARKETING [DEV]
-SFE Country Dashboard TMDL
-Activity Field Days
-Workspace ID: 310d9fbb-1474-4939-bcb8-669a536ec959
-Report ID: c89485c6-e0c3-4715-a710-ddd450491a9a
-groups/310d9fbb-1474-4939-bcb8-669a536ec959/reports/c89485c6-e0c3-4715-a710-ddd450491a9a/pages
-Page ID: ReportSectioncbd8077dfb6a167ccb5e
+{WORKSPACE NAME}
+{REPORT NAME}
+{PAGE NAME}
+Workspace ID: {WORKSPACE ID}
+Report ID: {REPORT ID}
+groups/{GROUP ID}/reports/{REPORT ID}/pages
+Page ID: {PAGE ID}
 Duration: 30.085
 Press Enter to continue...
 ```
