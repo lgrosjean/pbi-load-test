@@ -1,13 +1,16 @@
 """
  Take Ownership: https://learn.microsoft.com/en-us/rest/api/power-bi/reports/take-over-in-group
 """
+import os
 import typing as t
 from pathlib import Path
 from urllib.parse import urljoin
 
 import requests
-from azure.identity import (  # ClientSecretCredential,; InteractiveBrowserCredential,
+from azure.identity import (
+    ClientSecretCredential,
     DefaultAzureCredential,
+    InteractiveBrowserCredential,
 )
 from loguru import logger
 
@@ -17,17 +20,27 @@ SCOPE = "https://analysis.windows.net/powerbi/api/.default"
 class PowerBIClient:
     base_url = "https://api.powerbi.com/v1.0/myorg/"
 
-    # TODO: if client_id, tenant_id, client_secret provided, use ClientSecretCredential
-    def __init__(self):
-        # By default: AAD
-        self.token = self.get_token()
+    def __init__(self, method="oauth"):
+        self.token = self.get_token(method)
 
-    # TODO: check "authentification" method in config: oauth, browser, service principal
-    def get_token(self):
-        # TODO: check if azure-cli is available, if not use InteractiveBrowser
-        # azure-cli installed (brew install ...)
-        # `az login --allow-no-subscriptions` or see the option with scope in parameters
-        credentials = DefaultAzureCredential()
+    def get_token(self, method):
+        logger.debug(f"Azure credentials method: {method}")
+        if (
+            method == "oauth"
+        ):  # required azure-cli installed + `az login --allow-no-subscriptions`
+            credentials = DefaultAzureCredential()
+        elif method == "browser":
+            credentials = InteractiveBrowserCredential()
+        elif method == "tenant":
+            client_id = os.getenv("AZURE_CLIENT_ID")
+            client_secret = os.getenv("AZURE_CLIENT_SECRET")
+            tenant_id = os.getenv("AZURE_TENANT_ID")
+            credentials = ClientSecretCredential(
+                client_id=client_id, client_secret=client_secret, tenant_id=tenant_id
+            )
+        else:
+            raise AttributeError(f"Method provided {method} doesnt exists")
+
         access_token = credentials.get_token(SCOPE)
         logger.info("Credentials Azure retrived")
         token = access_token.token

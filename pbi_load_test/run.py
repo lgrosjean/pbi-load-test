@@ -16,10 +16,12 @@ def run(project_dir=None, clean=True, headless: bool = True):
     if not project_dir:
         project_dir = Path().cwd()
 
-    pbi_client = PowerBIClient()
-    token_path = pbi_client.dump_token(path=project_dir)
-
     config = load_config()
+
+    method = config["authentification"]
+
+    pbi_client = PowerBIClient(method)
+    token_path = pbi_client.dump_token(path=project_dir)
 
     workspace_name = config["workspace"]
     logger.info(f"Workspace name: {workspace_name}")
