@@ -10,7 +10,7 @@ from .pbi import PowerBIClient
 from .scraping import copy_html, load_url
 
 
-def run(project_dir=None, clean=True):
+def run(project_dir=None, clean=True, headless: bool = True):
     """Run the load test"""
 
     if not project_dir:
@@ -75,7 +75,7 @@ def run(project_dir=None, clean=True):
 
     fileurl = f"file:///{project_filepath}"
 
-    driver = load_url(fileurl)
+    driver = load_url(fileurl, headless=headless)
 
     duration = None
 
@@ -86,7 +86,7 @@ def run(project_dir=None, clean=True):
         except JavascriptException:
             time.sleep(1)
 
-    print(f"Duration: {duration}s")
+    logger.info(f"Duration: {duration}s")
 
     input("Press Enter to continue...")
 

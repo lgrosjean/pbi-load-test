@@ -24,8 +24,10 @@ def token():
 
 
 @cli.command()
-def run():
-    _run()
+@click.option("--keep", is_flag=True, help="Keep the created temporary files")
+@click.option("--show", is_flag=True, help="Show Chromium driver")
+def run(keep, show):
+    _run(clean=not keep, headless=not show)
 
 
 if __name__ == "__main__":
