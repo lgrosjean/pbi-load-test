@@ -1,8 +1,8 @@
 import click
 
-from . import __version__
-from .pbi import PowerBIClient
-from .run import run as _run
+from pbi_load_test import __version__
+from pbi_load_test.pbi import PowerBIClient
+from pbi_load_test.run import run as _run
 
 
 @click.group(invoke_without_command=True)
@@ -26,3 +26,7 @@ def token():
 @cli.command()
 def run():
     _run()
+
+
+if __name__ == "__main__":
+    cli()
